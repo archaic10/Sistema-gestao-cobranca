@@ -7,7 +7,7 @@ package View;
 
 /**
  *
- * @author vitor
+ * @author Vitor França
  */
 public class Pagamento extends javax.swing.JFrame {
 

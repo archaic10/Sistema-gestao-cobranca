@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author ALUNO
+ * @author Vitor França
  */
 public class PagamentoModel {
  private int idpag;

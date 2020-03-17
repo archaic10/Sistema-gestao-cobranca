@@ -7,7 +7,7 @@ package Model;
 
 /**
  *
- * @author ALUNO
+ * @author Vitor França
  */
 public class PessoaModel {
     private int idPessoa;

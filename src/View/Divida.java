@@ -8,7 +8,7 @@ package View;
 
 /**
  *
- * @author vitor
+ * @author Vitor França
  */
 public class Divida extends javax.swing.JFrame {
 

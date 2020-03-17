@@ -9,7 +9,7 @@ import Model.ClienteModel;
 
 /**
  *
- * @author vitor
+ * @author Vitor França
  */
 public class Cliente extends javax.swing.JFrame {
 
@@ -249,8 +249,7 @@ public class Cliente extends javax.swing.JFrame {
         cliente.setUf(slctUf.getSelectedItem().toString());
         cliente.setDocumento(txtRg.getText());
         cliente.setEmail(txtEmail.getText());
-        cliente.salvarCliente(cliente);
-       
+        cliente.salvarCliente(cliente);     
     
         
        
