@@ -5,6 +5,8 @@
  */
 package View;
 
+import Model.ClienteModel;
+
 /**
  *
  * @author vitor
@@ -113,6 +115,7 @@ public class Cliente extends javax.swing.JFrame {
         });
         getContentPane().add(txtRg, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 470, 200, 30));
 
+        slctUf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "teste" }));
         slctUf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 slctUfActionPerformed(evt);
@@ -167,7 +170,7 @@ public class Cliente extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/form-PainelFundo.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -50, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/61764.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -239,6 +242,18 @@ public class Cliente extends javax.swing.JFrame {
 
     private void btnSalvarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarClienteActionPerformed
         // TODO add your handling code here:
+        ClienteModel cliente = new ClienteModel(); 
+        cliente.setNomeCliente(txtNome.getText());
+        cliente.setTelefone(txtTel.getText());
+        cliente.setEndereco(txtEndereco.getText());
+        cliente.setUf(slctUf.getSelectedItem().toString());
+        cliente.setDocumento(txtRg.getText());
+        cliente.setEmail(txtEmail.getText());
+        cliente.salvarCliente(cliente);
+       
+    
+        
+       
     }//GEN-LAST:event_btnSalvarClienteActionPerformed
 
     /**

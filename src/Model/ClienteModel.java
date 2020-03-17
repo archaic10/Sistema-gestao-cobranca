@@ -79,5 +79,13 @@ public class ClienteModel {
         this.email = email;
     }
     
-    
+    public void salvarCliente(ClienteModel cliente){
+        
+        String query = "INSERT INTO cliente (nome, endereco, codigocat) "+ 
+                "values ("+cliente.nomeCliente+","+cliente.endereco+" ,"+cliente.uf+","+cliente.telefone+","+cliente.documento+","+cliente.email+" )";
+        System.out.println(query);
+    }
+    public void excluir (ClienteModel cliente){
+        String Query = "DELETE from cliente WHERE codigo='"+cliente.idCliente+"'";
+    }
 }

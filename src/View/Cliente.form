@@ -191,7 +191,9 @@
     <Component class="javax.swing.JComboBox" name="slctUf">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="1">
+            <StringItem index="0" value="teste"/>
+          </StringArray>
         </Property>
       </Properties>
       <Events>
@@ -324,7 +326,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="-30" width="-1" height="-1"/>
+          <AbsoluteConstraints x="0" y="-50" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
