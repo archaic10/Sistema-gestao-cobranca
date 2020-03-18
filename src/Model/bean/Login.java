@@ -6,6 +6,9 @@
 package Model.bean;
 
 import Model.dao.UsuarioDAO;
+import View.LoginForm;
+import View.MenuPrincipal;
+import javax.swing.JLabel;
 
 /**
  *
@@ -14,9 +17,13 @@ import Model.dao.UsuarioDAO;
 public class Login {
     private String nome_usuario;
     private String senha;
-
-    public Login() {
+    private final LoginForm view;
+    public boolean  autenticacao;
+    public Login(LoginForm view) {
+        this.view = view;
     }
+ 
+    
     
     public String getNome_usuario() {
         return nome_usuario;
@@ -36,12 +43,19 @@ public class Login {
     
     public void logar(){
         UsuarioDAO usuario = new UsuarioDAO();
-        
-        if(usuario.buscarUsuario(this)){
+        this.autenticacao = usuario.autenticar(this);
+        if(usuario.autenticar(this)){
             System.out.println("Logado com sucesso!");
+            MenuPrincipal menu = new MenuPrincipal();
+            menu.setVisible(true);           
+            this.view.dispose();
+            
         }else{
             System.out.println("Sua senha é: "+this.getSenha());
             System.out.println("Falha ao tentar logar!");
+            LoginForm login = new LoginForm();
+           
+
         }
     }
     

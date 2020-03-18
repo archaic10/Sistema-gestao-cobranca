@@ -18,8 +18,12 @@ public class LoginForm extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+ 
+    private Login iniciar;
     public LoginForm() {
         initComponents();
+        this.iniciar = new Login(this);
+        
     }
 
     /**
@@ -31,6 +35,7 @@ public class LoginForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblInfo = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         btnLogar = new javax.swing.JButton();
         textSenha = new javax.swing.JPasswordField();
@@ -43,6 +48,9 @@ public class LoginForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblInfo.setForeground(new java.awt.Color(255, 0, 51));
+        getContentPane().add(lblInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 360, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -96,11 +104,16 @@ public class LoginForm extends javax.swing.JFrame {
     private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
         // TODO add your handling code here:
        String nome_usuario = this.getTextUsuario().getText();
-        String senha = this.getTextSenha().getText();
-        Login login = new Login();
-        login.setNome_usuario(nome_usuario);
-        login.setSenha(senha);
-        login.logar();
+        String senha = this.getTextSenha().getText();       
+        this.iniciar.setNome_usuario(nome_usuario);
+        this.iniciar.setSenha(senha);
+        this.iniciar.logar();
+        if(this.iniciar.autenticacao == false){
+            lblInfo.setText("Login ou senha incorretos");
+        }else{
+        lblInfo.setText("");
+        }
+        
         
     }//GEN-LAST:event_btnLogarActionPerformed
 
@@ -163,6 +176,7 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel lblInfo;
     private javax.swing.JPasswordField textSenha;
     private javax.swing.JTextField textUsuario;
     // End of variables declaration//GEN-END:variables

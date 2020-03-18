@@ -27,7 +27,7 @@ public class UsuarioDAO {
          con = ConnectionFactory.getConnection();
     }
     
-    public boolean buscarUsuario(Login login){
+    public boolean autenticar(Login login){
         PreparedStatement stmt = null;
         ResultSet rs = null;
         String nome_usuario = "";
