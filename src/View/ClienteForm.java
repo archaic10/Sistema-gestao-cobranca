@@ -6,6 +6,7 @@
 package View;
 
 import Model.bean.Cliente;
+import Model.bean.Menu;
 import Model.dao.ClienteDAO;
 
 /**
@@ -17,8 +18,10 @@ public class ClienteForm extends javax.swing.JFrame {
     /**
      * Creates new form Cliente
      */
+    private final Menu controller;
     public ClienteForm() {
         initComponents();
+        this.controller = new Menu(this);
     }
 
     /**
@@ -51,9 +54,9 @@ public class ClienteForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuCadastro = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        itemCliente = new javax.swing.JMenuItem();
+        itemPagamento = new javax.swing.JMenuItem();
+        itemDivida = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -178,22 +181,32 @@ public class ClienteForm extends javax.swing.JFrame {
 
         jMenuCadastro.setText("Cadastro");
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/cliente-icone.png"))); // NOI18N
-        jMenuItem1.setText("Cliente");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        itemCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/cliente-icone.png"))); // NOI18N
+        itemCliente.setText("Cliente");
+        itemCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                itemClienteActionPerformed(evt);
             }
         });
-        jMenuCadastro.add(jMenuItem1);
+        jMenuCadastro.add(itemCliente);
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/pagamento-icone.png"))); // NOI18N
-        jMenuItem2.setText("Pagamento");
-        jMenuCadastro.add(jMenuItem2);
+        itemPagamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/pagamento-icone.png"))); // NOI18N
+        itemPagamento.setText("Pagamento");
+        itemPagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemPagamentoActionPerformed(evt);
+            }
+        });
+        jMenuCadastro.add(itemPagamento);
 
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/money.png"))); // NOI18N
-        jMenuItem3.setText("Dívida");
-        jMenuCadastro.add(jMenuItem3);
+        itemDivida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/money.png"))); // NOI18N
+        itemDivida.setText("Dívida");
+        itemDivida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemDividaActionPerformed(evt);
+            }
+        });
+        jMenuCadastro.add(itemDivida);
 
         jMenuBar1.add(jMenuCadastro);
 
@@ -216,10 +229,6 @@ public class ClienteForm extends javax.swing.JFrame {
     private void txtCodigoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodigoClienteActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void slctUfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slctUfActionPerformed
         // TODO add your handling code here:
@@ -252,6 +261,21 @@ public class ClienteForm extends javax.swing.JFrame {
         
        
     }//GEN-LAST:event_btnSalvarClienteActionPerformed
+
+    private void itemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemClienteActionPerformed
+        // TODO add your handling code here:
+        this.controller.navegar("cliente");
+    }//GEN-LAST:event_itemClienteActionPerformed
+
+    private void itemPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemPagamentoActionPerformed
+        // TODO add your handling code here:
+        this.controller.navegar("pagamento");
+    }//GEN-LAST:event_itemPagamentoActionPerformed
+
+    private void itemDividaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDividaActionPerformed
+        // TODO add your handling code here:
+        this.controller.navegar("divida");
+    }//GEN-LAST:event_itemDividaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,6 +315,9 @@ public class ClienteForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvarCliente;
     private javax.swing.JButton btnVoltarCliente;
+    private javax.swing.JMenuItem itemCliente;
+    private javax.swing.JMenuItem itemDivida;
+    private javax.swing.JMenuItem itemPagamento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -304,9 +331,6 @@ public class ClienteForm extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastro;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JComboBox<String> slctUf;
     private javax.swing.JTextField txtCodigoCliente;
     private javax.swing.JTextField txtEmail;
