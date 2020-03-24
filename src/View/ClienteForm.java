@@ -8,7 +8,9 @@ package View;
 import Model.bean.Cliente;
 import Model.bean.Menu;
 import Model.dao.ClienteDAO;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**
@@ -23,6 +25,9 @@ public class ClienteForm extends javax.swing.JFrame {
     private final Menu controller;
     public ClienteForm() {
         initComponents();
+        this.getBtnVoltarCliente().setVisible(false);
+        this.getTxtCodigoCliente().setVisible(false);
+        this.getLblCodigo().setVisible(false);
         this.controller = new Menu(this);
     }
 
@@ -35,23 +40,25 @@ public class ClienteForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblErro = new javax.swing.JLabel();
+        lblSucesso = new javax.swing.JLabel();
         btnVoltarCliente = new javax.swing.JButton();
         btnSalvarCliente = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
+        lblTel = new javax.swing.JLabel();
         txtTel = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
+        lblRg = new javax.swing.JLabel();
         txtRg = new javax.swing.JTextField();
         slctUf = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
+        lblUf = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblEndereco = new javax.swing.JLabel();
         txtEndereco = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        lblNome = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         txtCodigoCliente = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        lblCodigo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -63,6 +70,14 @@ public class ClienteForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblErro.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblErro.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(lblErro, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 320, 20));
+
+        lblSucesso.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblSucesso.setForeground(new java.awt.Color(0, 153, 0));
+        getContentPane().add(lblSucesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, 300, 20));
 
         btnVoltarCliente.setBackground(new java.awt.Color(102, 102, 102));
         btnVoltarCliente.setForeground(new java.awt.Color(255, 255, 255));
@@ -85,10 +100,10 @@ public class ClienteForm extends javax.swing.JFrame {
         });
         getContentPane().add(btnSalvarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 600, 130, 40));
 
-        jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Telefone:");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 510, -1, -1));
+        lblTel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblTel.setForeground(new java.awt.Color(255, 255, 255));
+        lblTel.setText("Telefone:");
+        getContentPane().add(lblTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 510, -1, -1));
 
         txtTel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,10 +112,10 @@ public class ClienteForm extends javax.swing.JFrame {
         });
         getContentPane().add(txtTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 530, 200, 30));
 
-        jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("E-mail:");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, -1, -1));
+        lblEmail.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmail.setText("E-mail:");
+        getContentPane().add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, -1, -1));
 
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,10 +124,10 @@ public class ClienteForm extends javax.swing.JFrame {
         });
         getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 530, 200, 30));
 
-        jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Rg:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 440, -1, -1));
+        lblRg.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblRg.setForeground(new java.awt.Color(255, 255, 255));
+        lblRg.setText("Rg:");
+        getContentPane().add(lblRg, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 440, -1, -1));
 
         txtRg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,7 +136,7 @@ public class ClienteForm extends javax.swing.JFrame {
         });
         getContentPane().add(txtRg, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 470, 200, 30));
 
-        slctUf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "teste" }));
+        slctUf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO", "\t" }));
         slctUf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 slctUfActionPerformed(evt);
@@ -129,20 +144,20 @@ public class ClienteForm extends javax.swing.JFrame {
         });
         getContentPane().add(slctUf, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 470, 90, 30));
 
-        jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("UF:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 440, -1, -1));
+        lblUf.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblUf.setForeground(new java.awt.Color(255, 255, 255));
+        lblUf.setText("UF:");
+        getContentPane().add(lblUf, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 440, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Cadastrar Cliente");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Endereço:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 370, -1, -1));
+        lblEndereco.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblEndereco.setForeground(new java.awt.Color(255, 255, 255));
+        lblEndereco.setText("Endereço:");
+        getContentPane().add(lblEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 370, -1, -1));
 
         txtEndereco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,10 +166,10 @@ public class ClienteForm extends javax.swing.JFrame {
         });
         getContentPane().add(txtEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 400, 200, 30));
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Nome:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, -1, -1));
+        lblNome.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblNome.setForeground(new java.awt.Color(255, 255, 255));
+        lblNome.setText("Nome:");
+        getContentPane().add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, -1, -1));
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,10 +185,10 @@ public class ClienteForm extends javax.swing.JFrame {
         });
         getContentPane().add(txtCodigoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 200, 30));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Código:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, -1, -1));
+        lblCodigo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblCodigo.setForeground(new java.awt.Color(255, 255, 255));
+        lblCodigo.setText("Código:");
+        getContentPane().add(lblCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/form-PainelFundo.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -50, -1, -1));
@@ -250,7 +265,17 @@ public class ClienteForm extends javax.swing.JFrame {
 
     private void btnVoltarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarClienteActionPerformed
         // TODO add your handling code here:
+        Cliente cl = new Cliente();
+        cl.voltar(this);
     }//GEN-LAST:event_btnVoltarClienteActionPerformed
+
+    public JButton getBtnVoltarCliente() {
+        return btnVoltarCliente;
+    }
+
+    public void setBtnVoltarCliente(JButton btnVoltarCliente) {
+        this.btnVoltarCliente = btnVoltarCliente;
+    }
 
     private void btnSalvarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarClienteActionPerformed
         // TODO add your handling code here:
@@ -271,6 +296,94 @@ public class ClienteForm extends javax.swing.JFrame {
         
        
     }//GEN-LAST:event_btnSalvarClienteActionPerformed
+
+    public JLabel getLblErro() {
+        return lblErro;
+    }
+
+    public void setLblErro(JLabel lblErro) {
+        this.lblErro = lblErro;
+    }
+
+    public JButton getBtnSalvarCliente() {
+        return btnSalvarCliente;
+    }
+
+    public void setBtnSalvarCliente(JButton btnSalvarCliente) {
+        this.btnSalvarCliente = btnSalvarCliente;
+    }
+
+    public JLabel getLblCodigo() {
+        return lblCodigo;
+    }
+
+    public void setLblCodigo(JLabel lblCodigo) {
+        this.lblCodigo = lblCodigo;
+    }
+
+    public JLabel getLblEmail() {
+        return lblEmail;
+    }
+
+    public void setLblEmail(JLabel lblEmail) {
+        this.lblEmail = lblEmail;
+    }
+
+    public JLabel getLblEndereco() {
+        return lblEndereco;
+    }
+
+    public void setLblEndereco(JLabel lblEndereco) {
+        this.lblEndereco = lblEndereco;
+    }
+
+    public JLabel getLblNome() {
+        return lblNome;
+    }
+
+    public void setLblNome(JLabel lblNome) {
+        this.lblNome = lblNome;
+    }
+
+    public JLabel getLblRg() {
+        return lblRg;
+    }
+
+    public void setLblRg(JLabel lblRg) {
+        this.lblRg = lblRg;
+    }
+
+    public JLabel getLblTel() {
+        return lblTel;
+    }
+
+    public void setLblTel(JLabel lblTel) {
+        this.lblTel = lblTel;
+    }
+
+    public JLabel getLblUf() {
+        return lblUf;
+    }
+
+    public void setLblUf(JLabel lblUf) {
+        this.lblUf = lblUf;
+    }
+
+    public JTextField getTxtCodigoCliente() {
+        return txtCodigoCliente;
+    }
+
+    public void setTxtCodigoCliente(JTextField txtCodigoCliente) {
+        this.txtCodigoCliente = txtCodigoCliente;
+    }
+
+    public JLabel getLblSucesso() {
+        return lblSucesso;
+    }
+
+    public void setLblSucesso(JLabel lblSucesso) {
+        this.lblSucesso = lblSucesso;
+    }
 
     public JComboBox<String> getSlctUf() {
         return slctUf;
@@ -377,18 +490,20 @@ public class ClienteForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemDivida;
     private javax.swing.JMenuItem itemPagamento;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastro;
+    private javax.swing.JLabel lblCodigo;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblEndereco;
+    private javax.swing.JLabel lblErro;
+    private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblRg;
+    private javax.swing.JLabel lblSucesso;
+    private javax.swing.JLabel lblTel;
+    private javax.swing.JLabel lblUf;
     private javax.swing.JComboBox<String> slctUf;
     private javax.swing.JTextField txtCodigoCliente;
     private javax.swing.JTextField txtEmail;

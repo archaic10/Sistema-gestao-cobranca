@@ -106,7 +106,54 @@ public class Cliente {
         this.setEmail(view.getTxtEmail().getText());
         this.setDocumento(view.getTxtRg().getText());
         ClienteDAO clienteDao = new ClienteDAO();
-        clienteDao.save(this);
+        if(clienteDao.save(this)){
+            view.getLblErro().setText("");
+            view.getTxtCodigoCliente().setVisible(false);
+            view.getLblCodigo().setVisible(false);
+            view.getTxtNome().setVisible(false);
+            view.getLblNome().setVisible(false);
+            view.getTxtEndereco().setVisible(false);
+            view.getLblEndereco().setVisible(false);
+            view.getTxtTel().setVisible(false);
+            view.getLblTel().setVisible(false);
+            view.getSlctUf().setVisible(false);
+            view.getLblUf().setVisible(false);
+            view.getTxtEmail().setVisible(false);
+            view.getLblEmail().setVisible(false);
+            view.getTxtRg().setVisible(false);
+            view.getLblRg().setVisible(false);
+            view.getBtnSalvarCliente().setVisible(false);
+            view.getBtnVoltarCliente().setVisible(true);
+            view.getLblSucesso().setText("Cadastro Realizado com sucesso!");           
+        }else{
+            view.getLblSucesso().setText("");
+            view.getLblErro().setText("Erro ao realizar cadastro!");
+        }
                 
+    }
+    public void voltar(ClienteForm view){          
+           view.getTxtNome().setVisible(true);
+           view.getTxtNome().setText("");
+           view.getLblNome().setVisible(true);
+           view.getTxtEndereco().setVisible(true);
+           view.getTxtEndereco().setText("");
+           view.getLblEndereco().setVisible(true);
+           view.getTxtTel().setVisible(true);
+           view.getTxtTel().setText("");
+           view.getLblTel().setVisible(true);
+           view.getSlctUf().setVisible(true);
+           view.getLblUf().setVisible(true);
+           view.getTxtEmail().setVisible(true);
+           view.getTxtEmail().setText("");
+           view.getLblEmail().setVisible(true);
+           view.getTxtRg().setVisible(true);
+           view.getTxtRg().setText("");
+           view.getLblRg().setVisible(true);
+           view.getBtnSalvarCliente().setVisible(true);
+           view.getBtnVoltarCliente().setVisible(false);
+           view.getLblSucesso().setText("");
+           view.getLblErro().setText("");
+          
+  
     }
 }
