@@ -5,6 +5,7 @@
  */
 package Model.bean;
 
+import View.ClienteCons;
 import View.ClienteForm;
 import View.DividaForm;
 import View.MenuPrincipal;
@@ -17,6 +18,7 @@ import View.PagamentoForm;
 public class Menu {
     private  MenuPrincipal view;
     private  ClienteForm view_cliente;
+     private  ClienteCons view_cons_cliente;
     private  PagamentoForm view_pagamento;
     private  DividaForm view_divida;
     private String compara;
@@ -39,6 +41,10 @@ public class Menu {
         this.view_divida = view;
         this.compara = this.view_divida.getClass().toString().replace("class View.", "");
     }
+     public Menu(ClienteCons view){
+      this.view_cons_cliente = view;
+        this.compara = this.view_cons_cliente.getClass().toString().replace("class View.", "");
+     }
     
     public void navegar(String item){   
         switch(item){
@@ -55,8 +61,7 @@ public class Menu {
                    this.view_cliente = new ClienteForm();
                     this.view_cliente.setVisible(true);
                     this.view_pagamento.dispose();
-                }
-               
+                }            
                
             break;
             case "pagamento":                

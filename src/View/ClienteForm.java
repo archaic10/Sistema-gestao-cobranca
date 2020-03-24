@@ -8,6 +8,8 @@ package View;
 import Model.bean.Cliente;
 import Model.bean.Menu;
 import Model.dao.ClienteDAO;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
 
 /**
  *
@@ -252,15 +254,71 @@ public class ClienteForm extends javax.swing.JFrame {
 
     private void btnSalvarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarClienteActionPerformed
         // TODO add your handling code here:
-        Cliente cliente = new Cliente();
-        ClienteDAO cl = new ClienteDAO();
-        cliente.setNomeCliente(txtNome.getText());
-        cl.save(cliente);
+        Cliente clienteBean = new Cliente();
+        clienteBean.cadastrarCliente(this);
+//        Cliente cliente = new Cliente();
+//        ClienteDAO cl = new ClienteDAO();
+//        cliente.setNomeCliente(txtNome.getText());
+//        cliente.setDocumento(txtRg.getText());
+//        cliente.setEndereco(txtEndereco.getText());
+//        cliente.setTelefone(txtTel.getText());
+//        cliente.setUf(slctUf.getSelectedItem().toString());
+        
+       
+//        cl.save(cliente);
             
     
         
        
     }//GEN-LAST:event_btnSalvarClienteActionPerformed
+
+    public JComboBox<String> getSlctUf() {
+        return slctUf;
+    }
+
+    public void setSlctUf(JComboBox<String> slctUf) {
+        this.slctUf = slctUf;
+    }
+
+    public JTextField getTxtEmail() {
+        return txtEmail;
+    }
+
+    public void setTxtEmail(JTextField txtEmail) {
+        this.txtEmail = txtEmail;
+    }
+
+    public JTextField getTxtEndereco() {
+        return txtEndereco;
+    }
+
+    public void setTxtEndereco(JTextField txtEndereco) {
+        this.txtEndereco = txtEndereco;
+    }
+
+    public JTextField getTxtNome() {
+        return txtNome;
+    }
+
+    public void setTxtNome(JTextField txtNome) {
+        this.txtNome = txtNome;
+    }
+
+    public JTextField getTxtRg() {
+        return txtRg;
+    }
+
+    public void setTxtRg(JTextField txtRg) {
+        this.txtRg = txtRg;
+    }
+
+    public JTextField getTxtTel() {
+        return txtTel;
+    }
+
+    public void setTxtTel(JTextField txtTel) {
+        this.txtTel = txtTel;
+    }
 
     private void itemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemClienteActionPerformed
         // TODO add your handling code here:

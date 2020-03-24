@@ -5,6 +5,11 @@
  */
 package Model.bean;
 
+import Model.dao.ClienteDAO;
+import View.ClienteCons;
+import View.ClienteForm;
+
+
 /**
  *
  * @author vitor
@@ -17,6 +22,28 @@ public class Cliente {
     private String telefone;
     private String documento;
     private String email;    
+
+    public Cliente(int idCliente, String nomeCliente, String endereco, String uf, String telefone, String documento, String email) {
+        this.idCliente = idCliente;
+        this.nomeCliente = nomeCliente;
+        this.endereco = endereco;
+        this.uf = uf;
+        this.telefone = telefone;
+        this.documento = documento;
+        this.email = email;
+    }
+
+    public Cliente() {
+    }
+
+    public Cliente(String nome, String email, String documento) {
+        this.nomeCliente = nome;
+        this.email = email;
+        this.documento = documento;
+        System.out.println(nome);        
+  
+    }
+    
 
     public String getNomeCliente() {
         return nomeCliente;
@@ -65,5 +92,21 @@ public class Cliente {
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
+    public void carregarTabela(ClienteCons view) throws Exception{
+        ClienteDAO cl = new ClienteDAO();   
+        ClienteTableModel clienteTableModel = new ClienteTableModel(view);
+        clienteTableModel.popularTabela(cl.obterTodos());
+    }
+    public void cadastrarCliente(ClienteForm view){
+        this.setNomeCliente(view.getTxtNome().getText());
+        this.setEndereco(view.getTxtEndereco().getText());
+        this.setTelefone(view.getTxtTel().getText());
+        this.setUf(view.getSlctUf().getSelectedItem().toString());
+        this.setEmail(view.getTxtEmail().getText());
+        this.setDocumento(view.getTxtRg().getText());
+        ClienteDAO clienteDao = new ClienteDAO();
+        clienteDao.save(this);
+                
+    }
 }
