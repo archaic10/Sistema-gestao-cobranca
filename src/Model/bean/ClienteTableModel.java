@@ -7,6 +7,7 @@ package Model.bean;
 
 import View.ClienteCons;
 import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,11 +25,16 @@ private final ClienteCons view;
        DefaultTableModel tableModel = (DefaultTableModel) this.view.getTabelaCliente().getModel();
        tableModel.setNumRows(0);
        for(Cliente cliente : dadosClientes){
-           tableModel.addRow(new Object[]{
-               cliente.getNomeCliente(),
-               cliente.getEmail(),
-               cliente.getDocumento()
-           });
+           System.out.println(cliente.getIdCliente());
+           tableModel.addRow(new Object[]{           
+                cliente.getIdCliente(),
+                cliente.getNomeCliente(),
+                cliente.getEmail(),
+                cliente.getEndereco(),
+                cliente.getDocumento(),              
+                cliente.getUf(),
+                cliente.getTelefone()
+           });  
        }
     }
 

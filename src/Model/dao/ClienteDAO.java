@@ -60,15 +60,15 @@ public class ClienteDAO {
 //            List<Cliente> list = new ArrayList<Cliente>();            
            listaCliente = new ArrayList<Cliente>();
             while(rs.next()){
-//                Integer cod_cliente = rs.getInt(1);
-                String nome = rs.getString(2);
-//                String endereco = rs.getString(3);        
-//                String telefone = rs.getString(4);
-//                String uf = rs.getString(5);
-                String documento= rs.getString(6);
-                String email = rs.getString(7);
-//                list.add(new Cliente (nome,email,documento)); 
-                listaCliente.add(new Cliente (nome,email,documento));
+                    Integer cod_cliente = rs.getInt(1);                 
+                    String nome = rs.getString(2);
+                    String endereco = rs.getString(3);        
+                    String telefone = rs.getString(4);
+                    String uf = rs.getString(5);
+                    String documento= rs.getString(6);
+                    String email = rs.getString(7);
+    //                list.add(new Cliente (nome,email,documento)); 
+                    listaCliente.add(new Cliente (cod_cliente, nome, endereco, uf, telefone, documento, email));
             }
            
             //aff não ta dando pra mostrar a tela da aplicacao
@@ -81,5 +81,50 @@ public class ClienteDAO {
        }       
        
     }
+        public ArrayList<Cliente> consultarPorCpf(String cpf) throws SQLException, Exception{
+            String query = "SELECT * FROM cliente where documento ="+cpf+" ";
+            PreparedStatement stmt = null;
+            ResultSet rs = null;       
+            try {
+                stmt = con.prepareCall(query);
+                rs = stmt.executeQuery();
+    //            List<Cliente> list = new ArrayList<Cliente>();            
+               listaCliente = new ArrayList<Cliente>();
+                while(rs.next()){
+                    Integer cod_cliente = rs.getInt(1);                    
+                    String nome = rs.getString(2);
+                    String endereco = rs.getString(3);        
+                    String telefone = rs.getString(4);
+                    String uf = rs.getString(5);
+                    String documento= rs.getString(6);
+                    String email = rs.getString(7);
+    //                list.add(new Cliente (nome,email,documento)); 
+                    listaCliente.add(new Cliente (cod_cliente, nome, endereco, uf, telefone, documento, email));
+                }
+      
+
+                //aff não ta dando pra mostrar a tela da aplicacao
+
+            return listaCliente;
+            } catch (SQLException sqle) {
+               throw new Exception(sqle);
+           } finally {
+               ConnectionFactory.closeConnection(con, stmt, rs);
+           }       
+
+        }
+        
+        public boolean delete(int codigo) throws SQLException, Exception{
+            String query = "DELETE FROM cliente where cod_cliente ="+codigo+" ";
+            System.out.println(query);
+             PreparedStatement stmt = null;
+             try {
+            stmt = con.prepareCall(query);
+              stmt.executeUpdate();
+            return true;      
+            } catch (SQLException sqle) {             
+               return false;
+           } 
+        }
     }
  

@@ -8,6 +8,8 @@ package Model.bean;
 import Model.dao.ClienteDAO;
 import View.ClienteCons;
 import View.ClienteForm;
+import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -31,6 +33,14 @@ public class Cliente {
         this.telefone = telefone;
         this.documento = documento;
         this.email = email;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public Cliente() {
@@ -97,6 +107,17 @@ public class Cliente {
         ClienteDAO cl = new ClienteDAO();   
         ClienteTableModel clienteTableModel = new ClienteTableModel(view);
         clienteTableModel.popularTabela(cl.obterTodos());
+        view.getTabelaCliente();
+        
+    }
+    public void buscarCliente(ClienteCons view) throws Exception{
+        ClienteDAO cl = new ClienteDAO();   
+        ClienteTableModel clienteTableModel = new ClienteTableModel(view);
+        clienteTableModel.popularTabela(cl.consultarPorCpf(view.getTxtCPF().getText()));
+        view.getTabelaCliente();
+        view.getBtnEditar().setVisible(true);
+        view.getBtnExcluir().setVisible(true);
+        
     }
     public void cadastrarCliente(ClienteForm view){
         this.setNomeCliente(view.getTxtNome().getText());
@@ -155,5 +176,44 @@ public class Cliente {
            view.getLblErro().setText("");
           
   
+    }
+
+    public void excluir(ClienteCons view) throws Exception {
+        DefaultTableModel dtm = (DefaultTableModel)view.getTabelaCliente().getModel(); 
+        int codigo = Integer.parseInt(dtm.getValueAt(0, 0).toString());
+        ClienteDAO cl = new ClienteDAO();
+        if(cl.delete(codigo)){
+            view.getLblErro().setText("");
+            view.getLblSucesso().setText("Cliente excluído com sucesso!");
+            view.getTabelaCliente().setVisible(false);
+            view.getBtnEditar().setVisible(false);
+            view.getBtnExcluir().setVisible(false);
+            view.getTxtCPF().setVisible(false);
+            view.getLblCpf().setVisible(false);
+            view.getBtnPesquisar().setVisible(false);
+            view.getBtnVoltarCliente().setVisible(true);
+            
+        }else{
+            view.getLblSucesso().setText("");
+            view.getLblErro().setText("Erro ao excluir cliente!");
+            
+            
+        }
+        
+    }
+    public void voltarConsulta(ClienteCons view) throws Exception{
+         view.getLblErro().setText("");
+         view.getLblSucesso().setText("");
+         ClienteDAO cl = new ClienteDAO();   
+            ClienteTableModel clienteTableModel = new ClienteTableModel(view);
+            clienteTableModel.popularTabela(cl.obterTodos());
+            view.getTabelaCliente();
+            view.getBtnVoltarCliente().setVisible(false);
+            view.getTabelaCliente().setVisible(true);
+            view.getBtnEditar().setVisible(false);
+            view.getBtnExcluir().setVisible(false);
+            view.getTxtCPF().setVisible(true);
+            view.getLblCpf().setVisible(true);
+            view.getBtnPesquisar().setVisible(true);
     }
 }

@@ -9,7 +9,10 @@ import Model.bean.Cliente;
 import Model.bean.Menu;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -26,7 +29,10 @@ public class ClienteCons extends javax.swing.JFrame {
         initComponents();
         this.controller = new Menu(this.view);      
         Cliente clBean = new Cliente();
-        clBean.carregarTabela(this.view);     
+        clBean.carregarTabela(this.view);  
+        this.view.getBtnVoltarCliente().setVisible(false);
+        this.view.getBtnEditar().setVisible(false);
+        this.view.getBtnExcluir().setVisible(false);
     }
 
     /**
@@ -38,9 +44,15 @@ public class ClienteCons extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblSucesso = new javax.swing.JLabel();
+        lblErro = new javax.swing.JLabel();
+        btnExcluir = new javax.swing.JButton();
+        btnPesquisar = new javax.swing.JButton();
+        txtCPF = new javax.swing.JTextField();
+        lblCpf = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaCliente = new javax.swing.JTable();
-        btnSalvarCliente = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
         btnVoltarCliente = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -55,27 +67,67 @@ public class ClienteCons extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblSucesso.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblSucesso.setForeground(new java.awt.Color(0, 153, 0));
+        getContentPane().add(lblSucesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, 300, 20));
+
+        lblErro.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblErro.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(lblErro, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, 320, 20));
+
+        btnExcluir.setBackground(new java.awt.Color(255, 0, 0));
+        btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 740, 130, 40));
+
+        btnPesquisar.setBackground(new java.awt.Color(0, 102, 204));
+        btnPesquisar.setForeground(new java.awt.Color(255, 255, 255));
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 240, 130, 30));
+
+        txtCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCPFActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 200, 30));
+
+        lblCpf.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblCpf.setForeground(new java.awt.Color(255, 255, 255));
+        lblCpf.setText("CPF:");
+        getContentPane().add(lblCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, -1, -1));
+
         tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nome", "Email", "CPF"
+                "Código Cliente", "Nome", "Email", "Endereço", "CPF", "Telefone", "UF"
             }
         ));
         jScrollPane1.setViewportView(tabelaCliente);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 710, 400));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 710, 400));
 
-        btnSalvarCliente.setBackground(new java.awt.Color(0, 102, 204));
-        btnSalvarCliente.setForeground(new java.awt.Color(255, 255, 255));
-        btnSalvarCliente.setText("Salvar");
-        btnSalvarCliente.addActionListener(new java.awt.event.ActionListener() {
+        btnEditar.setBackground(new java.awt.Color(0, 102, 204));
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarClienteActionPerformed(evt);
+                btnEditarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalvarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 670, 130, 40));
+        getContentPane().add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 740, 130, 40));
 
         btnVoltarCliente.setBackground(new java.awt.Color(102, 102, 102));
         btnVoltarCliente.setForeground(new java.awt.Color(255, 255, 255));
@@ -86,7 +138,7 @@ public class ClienteCons extends javax.swing.JFrame {
                 btnVoltarClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(btnVoltarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 670, 110, 40));
+        getContentPane().add(btnVoltarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 740, 110, 40));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -140,13 +192,19 @@ public class ClienteCons extends javax.swing.JFrame {
 
     private void btnVoltarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarClienteActionPerformed
         // TODO add your handling code here:
+        Cliente clienteBean = new Cliente();
+        try {
+            clienteBean.voltarConsulta(this.view);
+        } catch (Exception ex) {
+            Logger.getLogger(ClienteCons.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnVoltarClienteActionPerformed
 
-    private void btnSalvarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarClienteActionPerformed
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
      
 
-    }//GEN-LAST:event_btnSalvarClienteActionPerformed
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     private void itemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemClienteActionPerformed
         // TODO add your handling code here:
@@ -170,6 +228,87 @@ public class ClienteCons extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.controller.navegar("divida");
     }//GEN-LAST:event_itemDividaActionPerformed
+
+    private void txtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCPFActionPerformed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        // TODO add your handling code here:
+      
+        try {
+            Cliente clBean = new Cliente();
+            clBean.buscarCliente(this.view);
+        } catch (Exception ex) {
+            Logger.getLogger(ClienteCons.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // TODO add your handling code here:
+        Cliente clienteBean = new Cliente();
+        try {
+            clienteBean.excluir(this.view);
+        } catch (Exception ex) {
+            Logger.getLogger(ClienteCons.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    public JLabel getLblErro() {
+        return lblErro;
+    }
+
+    public void setLblErro(JLabel lblErro) {
+        this.lblErro = lblErro;
+    }
+
+    public JLabel getLblSucesso() {
+        return lblSucesso;
+    }
+
+    public void setLblSucesso(JLabel lblSucesso) {
+        this.lblSucesso = lblSucesso;
+    }
+
+    public JLabel getLblCpf() {
+        return lblCpf;
+    }
+
+    public void setLblCpf(JLabel lblCpf) {
+        this.lblCpf = lblCpf;
+    }
+
+    public JButton getBtnEditar() {
+        return btnEditar;
+    }
+
+    public void setBtnEditar(JButton btnEditar) {
+        this.btnEditar = btnEditar;
+    }
+
+    public JButton getBtnExcluir() {
+        return btnExcluir;
+    }
+
+    public void setBtnExcluir(JButton btnExcluir) {
+        this.btnExcluir = btnExcluir;
+    }
+
+    public JButton getBtnPesquisar() {
+        return btnPesquisar;
+    }
+
+    public void setBtnPesquisar(JButton btnPesquisar) {
+        this.btnPesquisar = btnPesquisar;
+    }
+
+    public JButton getBtnVoltarCliente() {
+        return btnVoltarCliente;
+    }
+
+    public void setBtnVoltarCliente(JButton btnVoltarCliente) {
+        this.btnVoltarCliente = btnVoltarCliente;
+    }
     
     /**
      * @param args the command line arguments
@@ -210,8 +349,18 @@ public class ClienteCons extends javax.swing.JFrame {
         });
     }
 
+    public JTextField getTxtCPF() {
+        return txtCPF;
+    }
+
+    public void setTxtCPF(JTextField txtCPF) {
+        this.txtCPF = txtCPF;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSalvarCliente;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnVoltarCliente;
     private javax.swing.JMenuItem itemCliente;
     private javax.swing.JMenuItem itemDivida;
@@ -223,7 +372,11 @@ public class ClienteCons extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastro;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblCpf;
+    private javax.swing.JLabel lblErro;
+    private javax.swing.JLabel lblSucesso;
     private javax.swing.JTable tabelaCliente;
+    private javax.swing.JTextField txtCPF;
     // End of variables declaration//GEN-END:variables
 
     private void carregarTabela() throws Exception {

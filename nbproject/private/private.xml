@@ -4,14 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/laragon/www/Sistema_gestao_cobranca/src/View/ClienteForm.java</file>
+            <file>file:/C:/laragon/www/Sistema_gestao_cobranca/src/Model/bean/ClienteTableTeste.java</file>
             <file>file:/C:/laragon/www/Sistema_gestao_cobranca/src/Model/bean/Cliente.java</file>
-            <file>file:/C:/laragon/www/Sistema_gestao_cobranca/src/View/LoginForm.java</file>
-            <file>file:/C:/laragon/www/Sistema_gestao_cobranca/src/Model/dao/ClienteDAO.java</file>
+            <file>file:/C:/laragon/www/Sistema_gestao_cobranca/src/Model/bean/ClienteTable.java</file>
             <file>file:/C:/laragon/www/Sistema_gestao_cobranca/src/Model/bean/ClienteTableModel.java</file>
-            <file>file:/C:/laragon/www/Sistema_gestao_cobranca/src/Model/dao/UsuarioDAO.java</file>
-            <file>file:/C:/laragon/www/Sistema_gestao_cobranca/src/Model/bean/Menu.java</file>
+            <file>file:/C:/laragon/www/Sistema_gestao_cobranca/src/Model/dao/ClienteDAO.java</file>
             <file>file:/C:/laragon/www/Sistema_gestao_cobranca/src/View/ClienteCons.java</file>
-            <file>file:/C:/laragon/www/Sistema_gestao_cobranca/src/Model/bean/Login.java</file>
         </group>
     </open-files>
 </project-private>

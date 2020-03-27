@@ -126,7 +126,7 @@ public class ClienteForm extends javax.swing.JFrame {
 
         lblRg.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblRg.setForeground(new java.awt.Color(255, 255, 255));
-        lblRg.setText("Rg:");
+        lblRg.setText("CPF:");
         getContentPane().add(lblRg, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 440, -1, -1));
 
         txtRg.addActionListener(new java.awt.event.ActionListener() {
