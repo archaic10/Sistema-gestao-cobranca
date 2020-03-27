@@ -52,7 +52,7 @@ public class ClienteForm extends javax.swing.JFrame {
         txtRg = new javax.swing.JTextField();
         slctUf = new javax.swing.JComboBox<>();
         lblUf = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
         lblEndereco = new javax.swing.JLabel();
         txtEndereco = new javax.swing.JTextField();
         lblNome = new javax.swing.JLabel();
@@ -149,10 +149,10 @@ public class ClienteForm extends javax.swing.JFrame {
         lblUf.setText("UF:");
         getContentPane().add(lblUf, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 440, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Cadastrar Cliente");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, -1, -1));
+        lblTitulo.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setText("Cadastrar Cliente");
+        getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, -1, -1));
 
         lblEndereco.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblEndereco.setForeground(new java.awt.Color(255, 255, 255));
@@ -405,6 +405,14 @@ public class ClienteForm extends javax.swing.JFrame {
         return txtEndereco;
     }
 
+    public JLabel getLblTitulo() {
+        return lblTitulo;
+    }
+
+    public void setLblTitulo(JLabel lblTitulo) {
+        this.lblTitulo = lblTitulo;
+    }
+
     public void setTxtEndereco(JTextField txtEndereco) {
         this.txtEndereco = txtEndereco;
     }
@@ -491,7 +499,6 @@ public class ClienteForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemPagamento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastro;
@@ -503,6 +510,7 @@ public class ClienteForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblRg;
     private javax.swing.JLabel lblSucesso;
     private javax.swing.JLabel lblTel;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblUf;
     private javax.swing.JComboBox<String> slctUf;
     private javax.swing.JTextField txtCodigoCliente;

@@ -8,6 +8,7 @@ package Model.bean;
 import Model.dao.ClienteDAO;
 import View.ClienteCons;
 import View.ClienteForm;
+import java.sql.SQLException;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
@@ -30,6 +31,7 @@ public class Cliente {
         this.nomeCliente = nomeCliente;
         this.endereco = endereco;
         this.uf = uf;
+        System.out.println("Meu "+uf);
         this.telefone = telefone;
         this.documento = documento;
         this.email = email;
@@ -110,16 +112,18 @@ public class Cliente {
         view.getTabelaCliente();
         
     }
-    public void buscarCliente(ClienteCons view) throws Exception{
+    public void buscarClienteCPF(ClienteCons view) throws Exception{
         ClienteDAO cl = new ClienteDAO();   
         ClienteTableModel clienteTableModel = new ClienteTableModel(view);
         clienteTableModel.popularTabela(cl.consultarPorCpf(view.getTxtCPF().getText()));
         view.getTabelaCliente();
         view.getBtnEditar().setVisible(true);
         view.getBtnExcluir().setVisible(true);
+        view.getBtnVoltarCliente().setVisible(true);
         
     }
-    public void cadastrarCliente(ClienteForm view){
+    public void cadastrarCliente(ClienteForm view) throws SQLException{
+        
         this.setNomeCliente(view.getTxtNome().getText());
         this.setEndereco(view.getTxtEndereco().getText());
         this.setTelefone(view.getTxtTel().getText());
@@ -127,32 +131,62 @@ public class Cliente {
         this.setEmail(view.getTxtEmail().getText());
         this.setDocumento(view.getTxtRg().getText());
         ClienteDAO clienteDao = new ClienteDAO();
-        if(clienteDao.save(this)){
-            view.getLblErro().setText("");
-            view.getTxtCodigoCliente().setVisible(false);
-            view.getLblCodigo().setVisible(false);
-            view.getTxtNome().setVisible(false);
-            view.getLblNome().setVisible(false);
-            view.getTxtEndereco().setVisible(false);
-            view.getLblEndereco().setVisible(false);
-            view.getTxtTel().setVisible(false);
-            view.getLblTel().setVisible(false);
-            view.getSlctUf().setVisible(false);
-            view.getLblUf().setVisible(false);
-            view.getTxtEmail().setVisible(false);
-            view.getLblEmail().setVisible(false);
-            view.getTxtRg().setVisible(false);
-            view.getLblRg().setVisible(false);
-            view.getBtnSalvarCliente().setVisible(false);
-            view.getBtnVoltarCliente().setVisible(true);
-            view.getLblSucesso().setText("Cadastro Realizado com sucesso!");           
+        if (view.getTxtCodigoCliente().getText() == ""){
+            
+            if(clienteDao.save(this)){
+                view.getLblErro().setText("");
+                view.getTxtCodigoCliente().setVisible(false);
+                view.getLblCodigo().setVisible(false);
+                view.getTxtNome().setVisible(false);
+                view.getLblNome().setVisible(false);
+                view.getTxtEndereco().setVisible(false);
+                view.getLblEndereco().setVisible(false);
+                view.getTxtTel().setVisible(false);
+                view.getLblTel().setVisible(false);
+                view.getSlctUf().setVisible(false);
+                view.getLblUf().setVisible(false);
+                view.getTxtEmail().setVisible(false);
+                view.getLblEmail().setVisible(false);
+                view.getTxtRg().setVisible(false);
+                view.getLblRg().setVisible(false);
+                view.getBtnSalvarCliente().setVisible(false);
+                view.getBtnVoltarCliente().setVisible(true);
+                view.getLblSucesso().setText("Cadastro realizado com sucesso!");           
+            }else{
+               
+                view.getLblSucesso().setText("");
+                view.getLblErro().setText("Erro ao realizar cadastro!");
+            }
         }else{
-            view.getLblSucesso().setText("");
-            view.getLblErro().setText("Erro ao realizar cadastro!");
+         this.setIdCliente(Integer.parseInt(view.getTxtCodigoCliente().getText())); 
+         if(clienteDao.update(this)){
+                view.getLblErro().setText("");
+                view.getTxtCodigoCliente().setVisible(false);
+                view.getLblCodigo().setVisible(false);
+                view.getTxtNome().setVisible(false);
+                view.getLblNome().setVisible(false);
+                view.getTxtEndereco().setVisible(false);
+                view.getLblEndereco().setVisible(false);
+                view.getTxtTel().setVisible(false);
+                view.getLblTel().setVisible(false);
+                view.getSlctUf().setVisible(false);
+                view.getLblUf().setVisible(false);
+                view.getTxtEmail().setVisible(false);
+                view.getLblEmail().setVisible(false);
+                view.getTxtRg().setVisible(false);
+                view.getLblRg().setVisible(false);
+                view.getBtnSalvarCliente().setVisible(false);
+                view.getBtnVoltarCliente().setVisible(true);
+            view.getLblSucesso().setText("Cliente alterado com sucesso!"); 
+         }else{
+            view.getLblSucesso().setText(""); 
+            view.getLblErro().setText("Erro ao alterar cliente!");
+         }
         }
                 
     }
-    public void voltar(ClienteForm view){          
+    public void voltar(ClienteForm view) throws Exception{ 
+        if (view.getTxtCodigoCliente().getText() == ""){
            view.getTxtNome().setVisible(true);
            view.getTxtNome().setText("");
            view.getLblNome().setVisible(true);
@@ -174,7 +208,12 @@ public class Cliente {
            view.getBtnVoltarCliente().setVisible(false);
            view.getLblSucesso().setText("");
            view.getLblErro().setText("");
-          
+        }else{
+            ClienteCons viewClienteCons = new ClienteCons();
+            this.voltarConsulta(viewClienteCons);
+            viewClienteCons.setVisible(true);
+            view.dispose();
+        }
   
     }
 
@@ -202,12 +241,10 @@ public class Cliente {
         
     }
     public void voltarConsulta(ClienteCons view) throws Exception{
-         view.getLblErro().setText("");
-         view.getLblSucesso().setText("");
-         ClienteDAO cl = new ClienteDAO();   
-            ClienteTableModel clienteTableModel = new ClienteTableModel(view);
-            clienteTableModel.popularTabela(cl.obterTodos());
-            view.getTabelaCliente();
+            view.getTxtCPF().setText("");
+            view.getLblErro().setText("");
+            view.getLblSucesso().setText("");
+            this.carregarTabela(view);
             view.getBtnVoltarCliente().setVisible(false);
             view.getTabelaCliente().setVisible(true);
             view.getBtnEditar().setVisible(false);
@@ -215,5 +252,34 @@ public class Cliente {
             view.getTxtCPF().setVisible(true);
             view.getLblCpf().setVisible(true);
             view.getBtnPesquisar().setVisible(true);
+    }
+    public void carregarDadosCliente (ClienteCons view) throws Exception{
+        DefaultTableModel dtm = (DefaultTableModel)view.getTabelaCliente().getModel(); 
+        int codigo = Integer.parseInt(dtm.getValueAt(0, 0).toString());
+        ClienteDAO cl = new ClienteDAO();
+        ClienteForm clienteForm = new ClienteForm();
+        clienteForm.setVisible(true);
+        view.dispose();
+        clienteForm.getLblTitulo().setText("Alterar dados do cliente");
+        clienteForm.getTxtCodigoCliente().setVisible(true);
+        clienteForm.getLblCodigo().setVisible(true);
+        for(Cliente campoCliente : cl.obterDados(codigo)){ 
+            
+            System.out.println("codigo: "+campoCliente.getIdCliente()+
+                    " nome: "+campoCliente.getNomeCliente()+
+                    " email: "+campoCliente.getEmail()+
+                    " endereco: "+campoCliente.getEndereco()+
+                    " cpf: "+campoCliente.getDocumento()+                    
+                    " tel: "+campoCliente.getTelefone()+
+            " uf: "+campoCliente.getUf());
+            clienteForm.getTxtCodigoCliente().setText(""+campoCliente.getIdCliente());
+            clienteForm.getTxtNome().setText(campoCliente.getNomeCliente());
+            clienteForm.getTxtEmail().setText(campoCliente.getEmail());
+            clienteForm.getTxtEndereco().setText(campoCliente.getEndereco());
+            clienteForm.getTxtRg().setText(campoCliente.getDocumento());
+            clienteForm.getTxtTel().setText(campoCliente.getTelefone());
+            clienteForm.getSlctUf().setSelectedItem(campoCliente.getUf());
+            
+        }
     }
 }

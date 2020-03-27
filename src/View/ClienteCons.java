@@ -202,7 +202,12 @@ public class ClienteCons extends javax.swing.JFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
-     
+        Cliente clienteBean = new Cliente();
+        try {
+            clienteBean.carregarDadosCliente(this.view);
+        } catch (Exception ex) {
+            Logger.getLogger(ClienteCons.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -238,7 +243,7 @@ public class ClienteCons extends javax.swing.JFrame {
       
         try {
             Cliente clBean = new Cliente();
-            clBean.buscarCliente(this.view);
+            clBean.buscarClienteCPF(this.view);
         } catch (Exception ex) {
             Logger.getLogger(ClienteCons.class.getName()).log(Level.SEVERE, null, ex);
         }

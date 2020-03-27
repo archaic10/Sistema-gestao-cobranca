@@ -13,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
@@ -101,10 +103,6 @@ public class ClienteDAO {
     //                list.add(new Cliente (nome,email,documento)); 
                     listaCliente.add(new Cliente (cod_cliente, nome, endereco, uf, telefone, documento, email));
                 }
-      
-
-                //aff não ta dando pra mostrar a tela da aplicacao
-
             return listaCliente;
             } catch (SQLException sqle) {
                throw new Exception(sqle);
@@ -126,5 +124,46 @@ public class ClienteDAO {
                return false;
            } 
         }
+        public ArrayList<Cliente> obterDados (int id)throws SQLException, Exception{
+           String query = "SELECT * FROM cliente where cod_cliente ="+id+" ";
+            PreparedStatement stmt = null;
+            ResultSet rs = null;       
+            try {
+                stmt = con.prepareCall(query);
+                rs = stmt.executeQuery();
+               listaCliente = new ArrayList<Cliente>();
+                while(rs.next()){
+                    Integer cod_cliente = rs.getInt(1);                    
+                    String nome = rs.getString(2);
+                    String endereco = rs.getString(3);   
+                    String uf = rs.getString(4);
+                    String telefone = rs.getString(5);                    
+                    String documento= rs.getString(6);
+                    String email = rs.getString(7);
+                    //                              idCliente, nome, endereco, uf, telefone,  documento,  email
+                    listaCliente.add(new Cliente (cod_cliente, nome, endereco, uf, telefone, documento, email));
+                }
+            return listaCliente;
+            } catch (SQLException sqle) {
+               throw new Exception(sqle);
+           } finally {
+               ConnectionFactory.closeConnection(con, stmt, rs);
+           }      
+        } 
+        
+        public boolean update(Cliente cliente) throws SQLException{
+            String query = "UPDATE cliente SET nome='"+cliente.getNomeCliente()+"' ,endereco='"+cliente.getEndereco()+"' ,uf='"+cliente.getUf()+"', telefone='"+cliente.getTelefone()+"', documento='"+cliente.getDocumento()+"', email='"+cliente.getEmail()+"' where cod_cliente='"+cliente.getIdCliente()+"'";
+            System.out.println(query);
+            try {
+            PreparedStatement stmt = null;
+            stmt = con.prepareStatement(query);
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            return false;
+        }
+            
+        }
+        
     }
  
