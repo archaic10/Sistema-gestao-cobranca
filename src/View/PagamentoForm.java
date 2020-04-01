@@ -6,6 +6,11 @@
 package View;
 
 import Model.bean.Menu;
+import Model.bean.Pagamento;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTextField;
 
 /**
  *
@@ -20,6 +25,38 @@ public class PagamentoForm extends javax.swing.JFrame {
     public PagamentoForm() {
         initComponents();
         this.controller = new Menu(this);
+    }
+
+    public JTextField getTxtCodigoPagamento() {
+        return txtCodigoPagamento;
+    }
+
+    public void setTxtCodigoPagamento(JTextField txtCodigoPagamento) {
+        this.txtCodigoPagamento = txtCodigoPagamento;
+    }
+
+    public JTextField getTxtDataPg() {
+        return txtDataPg;
+    }
+
+    public void setTxtDataPg(JTextField txtDataPg) {
+        this.txtDataPg = txtDataPg;
+    }
+
+    public JTextField getTxtValor() {
+        return txtValor;
+    }
+
+    public void setTxtValor(JTextField txtValor) {
+        this.txtValor = txtValor;
+    }
+
+    public JTextField getTxtDivida() {
+        return txtDivida;
+    }
+
+    public void setTxtDivida(JTextField txtDivida) {
+        this.txtDivida = txtDivida;
     }
 
     /**
@@ -37,7 +74,7 @@ public class PagamentoForm extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtValor = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtDivida = new javax.swing.JTextField();
         txtDataPg = new javax.swing.JTextField();
         txtCodigoPagamento = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -97,12 +134,12 @@ public class PagamentoForm extends javax.swing.JFrame {
         jLabel5.setText("Dívida:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, -1, -1));
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txtDivida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txtDividaActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, 200, 30));
+        getContentPane().add(txtDivida, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, 200, 30));
 
         txtDataPg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,9 +214,9 @@ public class PagamentoForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtValorActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txtDividaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDividaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txtDividaActionPerformed
 
     private void txtDataPgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataPgActionPerformed
         // TODO add your handling code here:
@@ -195,6 +232,12 @@ public class PagamentoForm extends javax.swing.JFrame {
 
     private void btnSalvarPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPagamentoActionPerformed
         // TODO add your handling code here:
+        Pagamento pagamento = new Pagamento();
+        try {
+            pagamento.realizarPagamento(this);
+        } catch (ParseException ex) {
+            Logger.getLogger(PagamentoForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnSalvarPagamentoActionPerformed
 
     private void itemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemClienteActionPerformed
@@ -263,9 +306,9 @@ public class PagamentoForm extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastro;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField txtCodigoPagamento;
     private javax.swing.JTextField txtDataPg;
+    private javax.swing.JTextField txtDivida;
     private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 }

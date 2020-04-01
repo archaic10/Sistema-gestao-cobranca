@@ -8,6 +8,9 @@ package View;
 import Model.bean.Cliente;
 import Model.bean.Menu;
 import Model.dao.ClienteDAO;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -266,7 +269,11 @@ public class ClienteForm extends javax.swing.JFrame {
     private void btnVoltarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarClienteActionPerformed
         // TODO add your handling code here:
         Cliente cl = new Cliente();
-        cl.voltar(this);
+        try {
+            cl.voltar(this);
+        } catch (Exception ex) {
+            Logger.getLogger(ClienteForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnVoltarClienteActionPerformed
 
     public JButton getBtnVoltarCliente() {
@@ -280,7 +287,8 @@ public class ClienteForm extends javax.swing.JFrame {
     private void btnSalvarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarClienteActionPerformed
         // TODO add your handling code here:
         Cliente clienteBean = new Cliente();
-        clienteBean.cadastrarCliente(this);
+        try {
+            clienteBean.cadastrarCliente(this);
 //        Cliente cliente = new Cliente();
 //        ClienteDAO cl = new ClienteDAO();
 //        cliente.setNomeCliente(txtNome.getText());
@@ -288,9 +296,12 @@ public class ClienteForm extends javax.swing.JFrame {
 //        cliente.setEndereco(txtEndereco.getText());
 //        cliente.setTelefone(txtTel.getText());
 //        cliente.setUf(slctUf.getSelectedItem().toString());
-        
-       
+
+
 //        cl.save(cliente);
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
             
     
         

@@ -9,15 +9,15 @@ package Model.bean;
  *
  * @author vitor
  */
-abstract class Pessoa {
-    private int idPessoa;
-    protected String nomePessoa;   
+public class Pessoa {
+    
+    private String nomePessoa;   
 
-    protected String getNomePessoa() {
+    public String getNomePessoa() {
         return nomePessoa;
     }
 
-    protected void setNomePessoa(String nomePessoa) {
+    public void setNomePessoa(String nomePessoa) {
         this.nomePessoa = nomePessoa;
     }
     

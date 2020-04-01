@@ -23,6 +23,14 @@ public class Divida {
         return credor;
     }
 
+    public int getIdDivida() {
+        return idDivida;
+    }
+
+    public void setIdDivida(int idDivida) {
+        this.idDivida = idDivida;
+    }
+
     public void setCredor(Pessoa credor) {
         this.credor = credor;
     }

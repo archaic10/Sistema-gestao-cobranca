@@ -263,15 +263,14 @@ public class Cliente {
         clienteForm.getLblTitulo().setText("Alterar dados do cliente");
         clienteForm.getTxtCodigoCliente().setVisible(true);
         clienteForm.getLblCodigo().setVisible(true);
-        for(Cliente campoCliente : cl.obterDados(codigo)){ 
-            
-            System.out.println("codigo: "+campoCliente.getIdCliente()+
-                    " nome: "+campoCliente.getNomeCliente()+
-                    " email: "+campoCliente.getEmail()+
-                    " endereco: "+campoCliente.getEndereco()+
-                    " cpf: "+campoCliente.getDocumento()+                    
-                    " tel: "+campoCliente.getTelefone()+
-            " uf: "+campoCliente.getUf());
+        for(Cliente campoCliente : cl.obterDados(codigo)){             
+//            System.out.println("codigo: "+campoCliente.getIdCliente()+
+//                    " nome: "+campoCliente.getNomeCliente()+
+//                    " email: "+campoCliente.getEmail()+
+//                    " endereco: "+campoCliente.getEndereco()+
+//                    " cpf: "+campoCliente.getDocumento()+                    
+//                    " tel: "+campoCliente.getTelefone()+
+//            " uf: "+campoCliente.getUf());
             clienteForm.getTxtCodigoCliente().setText(""+campoCliente.getIdCliente());
             clienteForm.getTxtNome().setText(campoCliente.getNomeCliente());
             clienteForm.getTxtEmail().setText(campoCliente.getEmail());
