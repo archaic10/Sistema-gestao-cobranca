@@ -6,7 +6,10 @@
 
 package View;
 
+import Model.bean.Divida;
 import Model.bean.Menu;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
 
 /**
  *
@@ -14,10 +17,51 @@ import Model.bean.Menu;
  */
 public class DividaForm extends javax.swing.JFrame {
 private final Menu controller;
+private final DividaForm view= this;
     /** Creates new form Divida */
     public DividaForm() {
         initComponents();
         this.controller = new Menu(this);
+    }
+
+    public JTextField getTxtData() {
+        return txtData;
+    }
+
+    public void setTxtData(JTextField txtData) {
+        this.txtData = txtData;
+    }
+
+    public JTextField getTxtCodigoDivida() {
+        return txtCodigoDivida;
+    }
+
+    public void setTxtCodigoDivida(JTextField txtCodigoDivida) {
+        this.txtCodigoDivida = txtCodigoDivida;
+    }
+
+    public JTextField getTxtDivida() {
+        return txtDivida;
+    }
+
+    public void setTxtDivida(JTextField txtDivida) {
+        this.txtDivida = txtDivida;
+    }
+
+    public JComboBox<String> getSlcCredor() {
+        return slcCredor;
+    }
+
+    public void setSlcCredor(JComboBox<String> slcCredor) {
+        this.slcCredor = slcCredor;
+    }
+
+    public JComboBox<String> getSlcDevedor() {
+        return slcDevedor;
+    }
+
+    public void setSlcDevedor(JComboBox<String> slcDevedor) {
+        this.slcDevedor = slcDevedor;
     }
 
     /** This method is called from within the constructor to
@@ -29,14 +73,16 @@ private final Menu controller;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel8 = new javax.swing.JLabel();
+        txtData = new javax.swing.JTextField();
+        slcDevedor = new javax.swing.JComboBox<>();
+        slcCredor = new javax.swing.JComboBox<>();
         btnVoltarDivida = new javax.swing.JButton();
         btnSalvarDivida = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtDevedor = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtDivida = new javax.swing.JTextField();
-        txtCredor = new javax.swing.JTextField();
         txtCodigoDivida = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -52,6 +98,22 @@ private final Menu controller;
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Data de atualização:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 440, -1, -1));
+
+        txtData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDataActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtData, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 470, 200, 30));
+
+        getContentPane().add(slcDevedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 400, 180, 30));
+
+        getContentPane().add(slcCredor, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 330, 180, 30));
+
         btnVoltarDivida.setBackground(new java.awt.Color(102, 102, 102));
         btnVoltarDivida.setForeground(new java.awt.Color(255, 255, 255));
         btnVoltarDivida.setText("Voltar");
@@ -61,7 +123,7 @@ private final Menu controller;
                 btnVoltarDividaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnVoltarDivida, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 500, 110, 40));
+        getContentPane().add(btnVoltarDivida, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 530, 110, 40));
 
         btnSalvarDivida.setBackground(new java.awt.Color(0, 102, 204));
         btnSalvarDivida.setForeground(new java.awt.Color(255, 255, 255));
@@ -71,7 +133,7 @@ private final Menu controller;
                 btnSalvarDividaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalvarDivida, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 500, 130, 40));
+        getContentPane().add(btnSalvarDivida, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 530, 130, 40));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -82,13 +144,6 @@ private final Menu controller;
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Devedor:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 370, -1, -1));
-
-        txtDevedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDevedorActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtDevedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 400, 200, 30));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -101,13 +156,6 @@ private final Menu controller;
             }
         });
         getContentPane().add(txtDivida, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, 200, 30));
-
-        txtCredor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCredorActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtCredor, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 330, 200, 30));
 
         txtCodigoDivida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,20 +223,14 @@ private final Menu controller;
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodigoDividaActionPerformed
 
-    private void txtCredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCredorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCredorActionPerformed
-
     private void txtDividaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDividaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDividaActionPerformed
 
-    private void txtDevedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDevedorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDevedorActionPerformed
-
     private void btnSalvarDividaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarDividaActionPerformed
         // TODO add your handling code here:
+        Divida divida = new Divida();
+        divida.cadastrarDivida(this.view);
     }//GEN-LAST:event_btnSalvarDividaActionPerformed
 
     private void btnVoltarDividaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarDividaActionPerformed
@@ -209,6 +251,10 @@ private final Menu controller;
         // TODO add your handling code here:
         this.controller.navegar("divida");
     }//GEN-LAST:event_itemDividaActionPerformed
+
+    private void txtDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDataActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,12 +304,14 @@ private final Menu controller;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastro;
+    private javax.swing.JComboBox<String> slcCredor;
+    private javax.swing.JComboBox<String> slcDevedor;
     private javax.swing.JTextField txtCodigoDivida;
-    private javax.swing.JTextField txtCredor;
-    private javax.swing.JTextField txtDevedor;
+    private javax.swing.JTextField txtData;
     private javax.swing.JTextField txtDivida;
     // End of variables declaration//GEN-END:variables
 

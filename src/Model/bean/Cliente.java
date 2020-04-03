@@ -31,7 +31,6 @@ public class Cliente {
         this.nomeCliente = nomeCliente;
         this.endereco = endereco;
         this.uf = uf;
-        System.out.println("Meu "+uf);
         this.telefone = telefone;
         this.documento = documento;
         this.email = email;
@@ -52,7 +51,6 @@ public class Cliente {
         this.nomeCliente = nome;
         this.email = email;
         this.documento = documento;
-        System.out.println(nome);        
   
     }
     
@@ -120,6 +118,7 @@ public class Cliente {
         view.getBtnEditar().setVisible(true);
         view.getBtnExcluir().setVisible(true);
         view.getBtnVoltarCliente().setVisible(true);
+        view.getBtnRdivida().setVisible(true);
         
     }
     public void cadastrarCliente(ClienteForm view) throws SQLException{
@@ -264,13 +263,7 @@ public class Cliente {
         clienteForm.getTxtCodigoCliente().setVisible(true);
         clienteForm.getLblCodigo().setVisible(true);
         for(Cliente campoCliente : cl.obterDados(codigo)){             
-//            System.out.println("codigo: "+campoCliente.getIdCliente()+
-//                    " nome: "+campoCliente.getNomeCliente()+
-//                    " email: "+campoCliente.getEmail()+
-//                    " endereco: "+campoCliente.getEndereco()+
-//                    " cpf: "+campoCliente.getDocumento()+                    
-//                    " tel: "+campoCliente.getTelefone()+
-//            " uf: "+campoCliente.getUf());
+
             clienteForm.getTxtCodigoCliente().setText(""+campoCliente.getIdCliente());
             clienteForm.getTxtNome().setText(campoCliente.getNomeCliente());
             clienteForm.getTxtEmail().setText(campoCliente.getEmail());

@@ -6,6 +6,7 @@
 package View;
 
 import Model.bean.Cliente;
+import Model.bean.Divida;
 import Model.bean.Menu;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,6 +34,15 @@ public class ClienteCons extends javax.swing.JFrame {
         this.view.getBtnVoltarCliente().setVisible(false);
         this.view.getBtnEditar().setVisible(false);
         this.view.getBtnExcluir().setVisible(false);
+        this.view.getBtnRdivida().setVisible(false);
+    }
+
+    public JButton getBtnRdivida() {
+        return btnRdivida;
+    }
+
+    public void setBtnRdivida(JButton btnRdivida) {
+        this.btnRdivida = btnRdivida;
     }
 
     /**
@@ -44,6 +54,7 @@ public class ClienteCons extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnRdivida = new javax.swing.JButton();
         lblSucesso = new javax.swing.JLabel();
         lblErro = new javax.swing.JLabel();
         btnExcluir = new javax.swing.JButton();
@@ -66,6 +77,16 @@ public class ClienteCons extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnRdivida.setBackground(new java.awt.Color(0, 102, 204));
+        btnRdivida.setForeground(new java.awt.Color(255, 255, 255));
+        btnRdivida.setText("Registrar dívida");
+        btnRdivida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRdividaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRdivida, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 740, 130, 40));
 
         lblSucesso.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblSucesso.setForeground(new java.awt.Color(0, 153, 0));
@@ -259,6 +280,16 @@ public class ClienteCons extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
+    private void btnRdividaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRdividaActionPerformed
+        // TODO add your handling code here:
+        Divida divida = new Divida();
+        try {
+            divida.carregarDados(this.view);
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }//GEN-LAST:event_btnRdividaActionPerformed
+
     public JLabel getLblErro() {
         return lblErro;
     }
@@ -366,6 +397,7 @@ public class ClienteCons extends javax.swing.JFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPesquisar;
+    private javax.swing.JButton btnRdivida;
     private javax.swing.JButton btnVoltarCliente;
     private javax.swing.JMenuItem itemCliente;
     private javax.swing.JMenuItem itemDivida;

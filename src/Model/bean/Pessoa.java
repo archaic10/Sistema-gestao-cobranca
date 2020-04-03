@@ -11,7 +11,16 @@ package Model.bean;
  */
 public class Pessoa {
     
-    private String nomePessoa;   
+    private String nomePessoa; 
+    private String documento;
+
+    public String getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(String documento) {
+        this.documento = documento;
+    }
 
     public String getNomePessoa() {
         return nomePessoa;
