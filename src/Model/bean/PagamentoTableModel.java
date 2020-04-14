@@ -30,7 +30,9 @@ public class PagamentoTableModel {
              
              tableModel.addRow(new Object[]{           
                 pagamentos.getIdpag(),
+                pagamentos.getDivida().getIdDivida(),                
                 pagamentos.getDivida().getDevedor().getNomePessoa(),
+                pagamentos.getDivida().getDevedor().getDocumento(),
                 pagamentos.getDivida().getValorDivida(),
                 pagamentos.getDivida().getCredor().getNomePessoa(),
                 pagamentos.getValorpago(),              

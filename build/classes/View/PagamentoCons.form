@@ -20,18 +20,25 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemClienteActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="itemPagamento">
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="MenuConsulta">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Consulta"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="consultaItemCliente">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/View/imagens/icones/pagamento-icone.png"/>
+                  <Image iconType="3" name="/View/imagens/icones/cliente-icone.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Pagamento"/>
+                <Property name="text" type="java.lang.String" value="Cliente"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemPagamentoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultaItemClienteActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="itemDivida">
+            <MenuItem class="javax.swing.JMenuItem" name="consultaItemDivida">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/View/imagens/icones/money.png"/>
@@ -39,15 +46,21 @@
                 <Property name="text" type="java.lang.String" value="D&#xed;vida"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemDividaActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultaItemDividaActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="consultaItemPagamento">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/View/imagens/icones/pagamento-icone.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Pagamento"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultaItemPagamentoActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Altera&#xe7;&#xe3;o"/>
-          </Properties>
         </Menu>
       </SubComponents>
     </Menu>
@@ -88,7 +101,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="480" y="180" width="300" height="20"/>
+          <AbsoluteConstraints x="480" y="180" width="710" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -103,7 +116,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="480" y="200" width="320" height="20"/>
+          <AbsoluteConstraints x="480" y="200" width="700" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -186,9 +199,11 @@
         <Component class="javax.swing.JTable" name="tabelaPagamento">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="7" rowCount="0">
+              <Table columnCount="9" rowCount="0">
                 <Column editable="true" title="C&#xf3;digo Pagamento" type="java.lang.Object"/>
+                <Column editable="true" title="C&#xf3;digo D&#xed;vida" type="java.lang.Object"/>
                 <Column editable="true" title="Devedor" type="java.lang.Object"/>
+                <Column editable="true" title="Documento" type="java.lang.Object"/>
                 <Column editable="true" title="Valor da d&#xed;vida" type="java.lang.Object"/>
                 <Column editable="true" title="Credor" type="java.lang.Object"/>
                 <Column editable="true" title="Valor pago" type="java.lang.Object"/>

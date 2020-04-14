@@ -5,10 +5,14 @@
  */
 package View;
 
+import Model.bean.Menu;
 import Model.bean.Pagamento;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -16,14 +20,82 @@ import javax.swing.JTable;
  */
 public class PagamentoCons extends javax.swing.JFrame {
     private final PagamentoCons view = this;
+    private final Menu controller;
     /**
      * Creates new form PagamentoCons
      */
     public PagamentoCons() throws Exception {
         initComponents();
+        this.controller = new Menu(this.view);
+        this.getBtnEditar().setVisible(false);
+        this.getBtnExcluir().setVisible(false);
         Pagamento pagamentoBean = new Pagamento();
-        pagamentoBean.carregarTabela(view);
+        pagamentoBean.carregarTabela(this.view);
         
+    }
+
+    public JLabel getLblErro() {
+        return lblErro;
+    }
+
+    public void setLblErro(JLabel lblErro) {
+        this.lblErro = lblErro;
+    }
+
+    public JLabel getLblSucesso() {
+        return lblSucesso;
+    }
+
+    public void setLblSucesso(JLabel lblSucesso) {
+        this.lblSucesso = lblSucesso;
+    }
+
+    public JButton getBtnEditar() {
+        return btnEditar;
+    }
+
+    public void setBtnEditar(JButton btnEditar) {
+        this.btnEditar = btnEditar;
+    }
+
+    public JButton getBtnExcluir() {
+        return btnExcluir;
+    }
+
+    public void setBtnExcluir(JButton btnExcluir) {
+        this.btnExcluir = btnExcluir;
+    }
+
+    public JButton getBtnPesquisar() {
+        return btnPesquisar;
+    }
+
+    public void setBtnPesquisar(JButton btnPesquisar) {
+        this.btnPesquisar = btnPesquisar;
+    }
+
+    public JButton getBtnVoltarCliente() {
+        return btnVoltarCliente;
+    }
+
+    public void setBtnVoltarCliente(JButton btnVoltarCliente) {
+        this.btnVoltarCliente = btnVoltarCliente;
+    }
+
+    public JLabel getLblCpf() {
+        return lblCpf;
+    }
+
+    public void setLblCpf(JLabel lblCpf) {
+        this.lblCpf = lblCpf;
+    }
+
+    public JTextField getTxtCPF() {
+        return txtCPF;
+    }
+
+    public void setTxtCPF(JTextField txtCPF) {
+        this.txtCPF = txtCPF;
     }
 
     public JTable getTabelaPagamento() {
@@ -59,20 +131,21 @@ public class PagamentoCons extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuCadastro = new javax.swing.JMenu();
         itemCliente = new javax.swing.JMenuItem();
-        itemPagamento = new javax.swing.JMenuItem();
-        itemDivida = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        MenuConsulta = new javax.swing.JMenu();
+        consultaItemCliente = new javax.swing.JMenuItem();
+        consultaItemDivida = new javax.swing.JMenuItem();
+        consultaItemPagamento = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblSucesso.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblSucesso.setForeground(new java.awt.Color(0, 153, 0));
-        getContentPane().add(lblSucesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, 300, 20));
+        getContentPane().add(lblSucesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, 710, 20));
 
         lblErro.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblErro.setForeground(new java.awt.Color(255, 0, 0));
-        getContentPane().add(lblErro, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, 320, 20));
+        getContentPane().add(lblErro, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, 700, 20));
 
         btnExcluir.setBackground(new java.awt.Color(255, 0, 0));
         btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
@@ -111,7 +184,7 @@ public class PagamentoCons extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código Pagamento", "Devedor", "Valor da dívida", "Credor", "Valor pago", "Data pagamento", "Data atualizacao"
+                "Código Pagamento", "Código Dívida", "Devedor", "Documento", "Valor da dívida", "Credor", "Valor pago", "Data pagamento", "Data atualizacao"
             }
         ));
         jScrollPane1.setViewportView(tabelaPagamento);
@@ -161,28 +234,38 @@ public class PagamentoCons extends javax.swing.JFrame {
         });
         jMenuCadastro.add(itemCliente);
 
-        itemPagamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/pagamento-icone.png"))); // NOI18N
-        itemPagamento.setText("Pagamento");
-        itemPagamento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemPagamentoActionPerformed(evt);
-            }
-        });
-        jMenuCadastro.add(itemPagamento);
-
-        itemDivida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/money.png"))); // NOI18N
-        itemDivida.setText("Dívida");
-        itemDivida.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemDividaActionPerformed(evt);
-            }
-        });
-        jMenuCadastro.add(itemDivida);
-
         jMenuBar1.add(jMenuCadastro);
 
-        jMenu2.setText("Alteração");
-        jMenuBar1.add(jMenu2);
+        MenuConsulta.setText("Consulta");
+
+        consultaItemCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/cliente-icone.png"))); // NOI18N
+        consultaItemCliente.setText("Cliente");
+        consultaItemCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultaItemClienteActionPerformed(evt);
+            }
+        });
+        MenuConsulta.add(consultaItemCliente);
+
+        consultaItemDivida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/money.png"))); // NOI18N
+        consultaItemDivida.setText("Dívida");
+        consultaItemDivida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultaItemDividaActionPerformed(evt);
+            }
+        });
+        MenuConsulta.add(consultaItemDivida);
+
+        consultaItemPagamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/pagamento-icone.png"))); // NOI18N
+        consultaItemPagamento.setText("Pagamento");
+        consultaItemPagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultaItemPagamentoActionPerformed(evt);
+            }
+        });
+        MenuConsulta.add(consultaItemPagamento);
+
+        jMenuBar1.add(MenuConsulta);
 
         setJMenuBar(jMenuBar1);
 
@@ -201,13 +284,8 @@ public class PagamentoCons extends javax.swing.JFrame {
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         // TODO add your handling code here:
-
-//        try {
-//            Cliente clBean = new Cliente();
-//            clBean.buscarClienteCPF(this.view);
-//        } catch (Exception ex) {
-//            Logger.getLogger(ClienteCons.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        Pagamento pagamento = new Pagamento();
+        pagamento.buscarPorCPF(this.view);
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void txtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFActionPerformed
@@ -216,6 +294,8 @@ public class PagamentoCons extends javax.swing.JFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
+        Pagamento pagamento = new Pagamento();
+        pagamento.carregarDados(view);
 //        Cliente clienteBean = new Cliente();
 //        try {
 //            clienteBean.carregarDadosCliente(this.view);
@@ -236,18 +316,23 @@ public class PagamentoCons extends javax.swing.JFrame {
 
     private void itemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemClienteActionPerformed
         // TODO add your handling code here:
-//        this.controller.navegar("cliente");
+        this.controller.navegar("cliente");
     }//GEN-LAST:event_itemClienteActionPerformed
 
-    private void itemPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemPagamentoActionPerformed
+    private void consultaItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaItemClienteActionPerformed
         // TODO add your handling code here:
-//        this.controller.navegar("pagamento");
-    }//GEN-LAST:event_itemPagamentoActionPerformed
+        this.controller.navegar("cliente_consulta");
+    }//GEN-LAST:event_consultaItemClienteActionPerformed
 
-    private void itemDividaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDividaActionPerformed
+    private void consultaItemDividaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaItemDividaActionPerformed
         // TODO add your handling code here:
-//        this.controller.navegar("divida");
-    }//GEN-LAST:event_itemDividaActionPerformed
+        this.controller.navegar("divida_consulta");
+    }//GEN-LAST:event_consultaItemDividaActionPerformed
+
+    private void consultaItemPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaItemPagamentoActionPerformed
+        // TODO add your handling code here:
+        this.controller.navegar("pagamento_consulta");
+    }//GEN-LAST:event_consultaItemPagamentoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -289,17 +374,18 @@ public class PagamentoCons extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu MenuConsulta;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnVoltarCliente;
+    private javax.swing.JMenuItem consultaItemCliente;
+    private javax.swing.JMenuItem consultaItemDivida;
+    private javax.swing.JMenuItem consultaItemPagamento;
     private javax.swing.JMenuItem itemCliente;
-    private javax.swing.JMenuItem itemDivida;
-    private javax.swing.JMenuItem itemPagamento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastro;
     private javax.swing.JScrollPane jScrollPane1;

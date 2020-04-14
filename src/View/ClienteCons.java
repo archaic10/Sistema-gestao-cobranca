@@ -71,9 +71,10 @@ public class ClienteCons extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuCadastro = new javax.swing.JMenu();
         itemCliente = new javax.swing.JMenuItem();
-        itemPagamento = new javax.swing.JMenuItem();
-        itemDivida = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        MenuConsulta = new javax.swing.JMenu();
+        consultaItemCliente = new javax.swing.JMenuItem();
+        consultaItemDivida = new javax.swing.JMenuItem();
+        consultaItemPagamento = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -183,28 +184,38 @@ public class ClienteCons extends javax.swing.JFrame {
         });
         jMenuCadastro.add(itemCliente);
 
-        itemPagamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/pagamento-icone.png"))); // NOI18N
-        itemPagamento.setText("Pagamento");
-        itemPagamento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemPagamentoActionPerformed(evt);
-            }
-        });
-        jMenuCadastro.add(itemPagamento);
-
-        itemDivida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/money.png"))); // NOI18N
-        itemDivida.setText("Dívida");
-        itemDivida.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemDividaActionPerformed(evt);
-            }
-        });
-        jMenuCadastro.add(itemDivida);
-
         jMenuBar1.add(jMenuCadastro);
 
-        jMenu2.setText("Alteração");
-        jMenuBar1.add(jMenu2);
+        MenuConsulta.setText("Consulta");
+
+        consultaItemCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/cliente-icone.png"))); // NOI18N
+        consultaItemCliente.setText("Cliente");
+        consultaItemCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultaItemClienteActionPerformed(evt);
+            }
+        });
+        MenuConsulta.add(consultaItemCliente);
+
+        consultaItemDivida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/money.png"))); // NOI18N
+        consultaItemDivida.setText("Dívida");
+        consultaItemDivida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultaItemDividaActionPerformed(evt);
+            }
+        });
+        MenuConsulta.add(consultaItemDivida);
+
+        consultaItemPagamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/pagamento-icone.png"))); // NOI18N
+        consultaItemPagamento.setText("Pagamento");
+        consultaItemPagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultaItemPagamentoActionPerformed(evt);
+            }
+        });
+        MenuConsulta.add(consultaItemPagamento);
+
+        jMenuBar1.add(MenuConsulta);
 
         setJMenuBar(jMenuBar1);
 
@@ -232,16 +243,6 @@ public class ClienteCons extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnEditarActionPerformed
 
-    private void itemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemClienteActionPerformed
-        // TODO add your handling code here:
-        this.controller.navegar("cliente");
-    }//GEN-LAST:event_itemClienteActionPerformed
-
-    private void itemPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemPagamentoActionPerformed
-        // TODO add your handling code here:
-        this.controller.navegar("pagamento");
-    }//GEN-LAST:event_itemPagamentoActionPerformed
-
     public JTable getTabelaCliente() {
         return tabelaCliente;
     }
@@ -249,11 +250,6 @@ public class ClienteCons extends javax.swing.JFrame {
     public void setTabelaCliente(JTable tabelaCliente) {
         this.tabelaCliente = tabelaCliente;
     }
-
-    private void itemDividaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDividaActionPerformed
-        // TODO add your handling code here:
-        this.controller.navegar("divida");
-    }//GEN-LAST:event_itemDividaActionPerformed
 
     private void txtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFActionPerformed
         // TODO add your handling code here:
@@ -289,6 +285,26 @@ public class ClienteCons extends javax.swing.JFrame {
             System.out.println(ex);
         }
     }//GEN-LAST:event_btnRdividaActionPerformed
+
+    private void itemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemClienteActionPerformed
+        // TODO add your handling code here:
+        this.controller.navegar("cliente");
+    }//GEN-LAST:event_itemClienteActionPerformed
+
+    private void consultaItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaItemClienteActionPerformed
+        // TODO add your handling code here:
+        this.controller.navegar("cliente_consulta");
+    }//GEN-LAST:event_consultaItemClienteActionPerformed
+
+    private void consultaItemDividaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaItemDividaActionPerformed
+        // TODO add your handling code here:
+        this.controller.navegar("divida_consulta");
+    }//GEN-LAST:event_consultaItemDividaActionPerformed
+
+    private void consultaItemPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaItemPagamentoActionPerformed
+        // TODO add your handling code here:
+        this.controller.navegar("pagamento_consulta");
+    }//GEN-LAST:event_consultaItemPagamentoActionPerformed
 
     public JLabel getLblErro() {
         return lblErro;
@@ -394,18 +410,19 @@ public class ClienteCons extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu MenuConsulta;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnRdivida;
     private javax.swing.JButton btnVoltarCliente;
+    private javax.swing.JMenuItem consultaItemCliente;
+    private javax.swing.JMenuItem consultaItemDivida;
+    private javax.swing.JMenuItem consultaItemPagamento;
     private javax.swing.JMenuItem itemCliente;
-    private javax.swing.JMenuItem itemDivida;
-    private javax.swing.JMenuItem itemPagamento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastro;
     private javax.swing.JScrollPane jScrollPane1;
